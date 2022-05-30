@@ -18,6 +18,8 @@ closeButton.addEventListener('click', function () {
 
 let formName = document.querySelector('.form__name');
 console.log(formName);
+console.log(formName);
 
 let formAbout = document.querySelector('.form__about');
+console.log(formAbout);
 console.log(formAbout);
