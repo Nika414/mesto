@@ -1,21 +1,18 @@
-.popup__form-item {
+.popup__form-name {
   width: 358px;
   min-height: 27px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0;
   margin: 0;
-}
-
-.popup__form-item:nth-of-type(1) {
   margin: 0 auto 30px auto;
 }
 
-.popup__form-item:focus {
+.popup__form-name:focus {
   outline-color: #6694ff;
 }
 
-.popup__form-item::placeholder {
+.popup__form-name::placeholder {
   font-family: 'Inter';
   font-size: 14px;
   font-weight: 400;
@@ -27,7 +24,7 @@
 }
 
 @media screen and (max-width:550px) {
-  .popup__form-item {
+  .popup__form-name {
     width: 238px;
   }
 }
