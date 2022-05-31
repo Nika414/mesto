@@ -1,6 +1,6 @@
 .popup__form-item {
   width: 358px;
-  height: 27px;
+  min-height: 27px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0;
@@ -24,4 +24,10 @@
   text-align: left;
   color: black;
   opacity: 1;
+}
+
+@media screen and (max-width:550px) {
+  .popup__form-item {
+    width: 238px;
+  }
 }

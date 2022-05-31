@@ -1,6 +1,6 @@
 .profile__name {
   max-width: 294px;
-  max-height: 39px;
+  max-height: fit-content;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
@@ -9,4 +9,22 @@
   color: #FFFFFF;
   margin: 22px 0 0 0;
   padding: 0;
+  align-self: flex-end;
+}
+
+@media screen and (max-width:700px) {
+  .profile__name {
+    text-align: center;
+    
+  }
+}
+
+@media screen and (max-width:320px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    margin: 26px 0 0 0;
+    max-width: 189px;
+    max-height: 26px;
+  }
 }

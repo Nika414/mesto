@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -12,66 +12,69 @@
 <body class="page">
   <header class="header">
     <img src="./images/Vector.svg" alt="Лого" class="header__logo">
-    <img src="./images/Line.svg" alt="" class="header__line">
+    <div class="header__line"></div>
   </header>
   <main class="main">
     <section class="profile">
-      <img src="./images/image.jpg" alt="Аватар" class="profile__avatar">
-      <div class="profile__info">
-        <div class="profile__description">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+      <div class="profile__main-info">
+        <img src="./images/image.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__description">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button"></button>
+          </div>
+          <div>
+            <h2 class="profile__about">Исследователь океана</h2>
+          </div>
         </div>
-
-        <h2 class="profile__about">Исследователь океана</h2>
       </div>
       <button class="profile__add-button"></button>
     </section>
-    <section class="photo-cards">
-      <div class="photo-cards__item">
+    <Ul class="photo-cards">
+      <li class="photo-cards__item">
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="photo-cards__pic">
         <div class="photo-cards__description">
-          <p class="photo-cards__photo-title">Карачаевск</p>
+          <h3 class="photo-cards__photo-title">Карачаевск</h3>
           <button class="photo-cards__like-button photo-cards__like-button_active"></button>
         </div>
-      </div>
-      <div class="photo-cards__item">
-        <img src="./images/kirill-pershin-1404681-unsplash (1).png" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <p class="photo-cards__photo-title">Гора Эльбрус</p>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </div>
-      <div class="photo-cards__item">
-        <img src="./images/kirill-pershin-1556355-unsplash (1).png" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <p class="photo-cards__photo-title">Домбай</p>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </div>
-      <div class="photo-cards__item">
+      </li>
+      <li class="photo-cards__item">
         <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото" class="photo-cards__pic">
         <div class="photo-cards__description">
-          <p class="photo-cards__photo-title">Гора Эльбрус</p>
+          <h3 class="photo-cards__photo-title">Гора Эльбрус</h3>
+          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
+        </div>
+      </li>
+      <li class="photo-cards__item">
+        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фото" class="photo-cards__pic">
+        <div class="photo-cards__description">
+          <h3 class="photo-cards__photo-title">Домбай</h3>
+          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
+        </div>
+      </li>
+      <li class="photo-cards__item">
+        <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото" class="photo-cards__pic">
+        <div class="photo-cards__description">
+          <h3 class="photo-cards__photo-title">Гора Эльбрус</h3>
           <button class="photo-cards__like-button photo-cards__like-button_active">
           </button>
         </div>
-      </div>
-      <div class="photo-cards__item">
-        <img src="./images/kirill-pershin-1556355-unsplash (1).png" alt="Фото" class="photo-cards__pic">
+      </li>
+      <li class="photo-cards__item">
+        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фото" class="photo-cards__pic">
         <div class="photo-cards__description">
-          <p class="photo-cards__photo-title">Домбай</p>
+          <h3 class="photo-cards__photo-title">Домбай</h3>
           <button class="photo-cards__like-button photo-cards__like-button_active"></button>
         </div>
-      </div>
-      <div class="photo-cards__item">
+      </li>
+      <li class="photo-cards__item">
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="photo-cards__pic">
         <div class="photo-cards__description">
-          <p class="photo-cards__photo-title">Карачаево-Черкессия</p>
+          <h3 class="photo-cards__photo-title">Карачаево-Черкессия</h3>
           <button class="photo-cards__like-button photo-cards__like-button_active"></button>
         </div>
-      </div>
-    </section>
+      </li>
+    </ul>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
@@ -80,14 +83,14 @@
     <div class="popup__container">
       <button class="popup__close-button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" action="">
+      <form class="popup__form">
         <input class="popup__form-item form__name" type="text" name="fullname" id="fullname" placeholder="Имя">
         <input class="popup__form-item form__about" type="text" name="about" id="about" placeholder="О себе">
         <button class="popup__form-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <script src="./index.js"></script>
+  <script src="./blocks/script/index.js"></script>
 </body>
 
 </html>
