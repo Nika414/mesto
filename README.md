@@ -12,7 +12,7 @@
 
 **GitHub Pages**
 
-[Ссылка на GitHub Pages](https://nika414.github.io/mesto/)
+* [Ссылка на GitHub Pages](https://nika414.github.io/mesto/)
 
 **Использованные технологии**
 * HTML
