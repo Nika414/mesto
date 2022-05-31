@@ -1,0 +1,11 @@
+.photo-cards {
+  max-width: 880px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 17px;
+  margin: 51px auto 0 auto;
+  padding: 0;
+}

@@ -1,0 +1,7 @@
+.photo-cards__item {
+  max-width: 282px;
+  max-height: 362px;
+  margin: 0 0 20px 0;
+  border-radius: 10px;
+  font-size: 0;
+}

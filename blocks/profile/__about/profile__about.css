@@ -1,0 +1,12 @@
+.profile__about {
+  max-width: 336px;
+  max-height: 18px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 16px 0 0 0;
+}

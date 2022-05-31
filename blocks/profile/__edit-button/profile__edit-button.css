@@ -1,0 +1,10 @@
+.profile__edit-button {
+  align-self: flex-end;
+  margin: 0 0 0 18px;
+  background-color: #000000;
+  background: url(../../../images/Edit\ Button\ \(1\).svg);
+  background-size: contain;
+  border: none;
+  width: 24px;
+  height: 24px;
+}
