@@ -12,10 +12,6 @@
   white-space: nowrap;
   overflow: hidden;
   border: none;
-  font-family: Inter;
   line-height: 29px;
   letter-spacing: 0em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
