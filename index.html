@@ -6,91 +6,89 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
   <header class="header">
-    <img src="./images/Vector.svg" alt="Лого" class="header__logo">
+    <img src="./images/Vector.svg" alt="Лого Место" class="header__logo">
     <div class="header__line"></div>
   </header>
   <main class="main">
     <section class="profile">
-      <div class="profile__main-info">
-        <img src="./images/image.jpg" alt="Аватар" class="profile__avatar">
-        <div class="profile__info">
-          <div class="profile__description">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
-          </div>
-          <div>
-            <h2 class="profile__about">Исследователь океана</h2>
-          </div>
+      <img src="./images/image.jpg" alt="Аватар пользователя" class="profile__avatar">
+      <div class="profile__info">
+        <div class="profile__name-edit">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
         </div>
+        <p class="profile__about">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+
+      <button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
     </section>
-    <ul class="photo-cards">
-      <li class="photo-cards__item">
-        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <h3 class="photo-cards__photo-title">Карачаевск</h3>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </li>
-      <li class="photo-cards__item">
-        <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <h3 class="photo-cards__photo-title">Гора Эльбрус</h3>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </li>
-      <li class="photo-cards__item">
-        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <h3 class="photo-cards__photo-title">Домбай</h3>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </li>
-      <li class="photo-cards__item">
-        <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <h3 class="photo-cards__photo-title">Гора Эльбрус</h3>
-          <button class="photo-cards__like-button photo-cards__like-button_active">
-          </button>
-        </div>
-      </li>
-      <li class="photo-cards__item">
-        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <h3 class="photo-cards__photo-title">Домбай</h3>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </li>
-      <li class="photo-cards__item">
-        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="photo-cards__pic">
-        <div class="photo-cards__description">
-          <h3 class="photo-cards__photo-title">Карачаево-Черкессия</h3>
-          <button class="photo-cards__like-button photo-cards__like-button_active"></button>
-        </div>
-      </li>
-    </ul>
+    <section>
+      <ul class="photo-cards">
+        <li class="photo-cards__item">
+          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск." class="photo-cards__pic">
+          <div class="photo-cards__description">
+            <h2 class="photo-cards__photo-title">Карачаевск</h2>
+            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          </div>
+        </li>
+        <li class="photo-cards__item">
+          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус." class="photo-cards__pic">
+          <div class="photo-cards__description">
+            <h2 class="photo-cards__photo-title">Гора Эльбрус</h2>
+            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          </div>
+        </li>
+        <li class="photo-cards__item">
+          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай." class="photo-cards__pic">
+          <div class="photo-cards__description">
+            <h2 class="photo-cards__photo-title">Домбай</h2>
+            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          </div>
+        </li>
+        <li class="photo-cards__item">
+          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус." class="photo-cards__pic">
+          <div class="photo-cards__description">
+            <h2 class="photo-cards__photo-title">Гора Эльбрус</h2>
+            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          </div>
+        </li>
+        <li class="photo-cards__item">
+          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай." class="photo-cards__pic">
+          <div class="photo-cards__description">
+            <h2 class="photo-cards__photo-title">Домбай</h2>
+            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          </div>
+        </li>
+        <li class="photo-cards__item">
+          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия." class="photo-cards__pic">
+          <div class="photo-cards__description">
+            <h2 class="photo-cards__photo-title">Карачаево-Черкессия</h2>
+            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
   <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-button"></button>
+      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form">
+      <form class="popup__form" name="personalinfo" method="post">
         <input class="popup__form-name" type="text" name="fullname" id="fullname" placeholder="Имя">
         <input class="popup__form-about" type="text" name="about" id="about" placeholder="О себе">
         <button class="popup__form-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <script src="./blocks/script/index.js"></script>
+  <script src="/script/index.js"></script>
 </body>
 
 </html>

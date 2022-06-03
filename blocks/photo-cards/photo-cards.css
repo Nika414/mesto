@@ -1,6 +1,6 @@
 .photo-cards {
   max-width: 880px;
-  
+  list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;

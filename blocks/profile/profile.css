@@ -5,7 +5,7 @@
   flex-direction: row;
   margin: 40px auto 0 auto;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width:940px) {
@@ -13,6 +13,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 40px auto 0 auto;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .profile {
+    flex-direction: row;
+    justify-content: center;
     margin: 40px auto 0 auto;
   }
 }
