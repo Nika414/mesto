@@ -20,13 +20,12 @@
   }
 }
 
-
-
 @media screen and (max-width:480px) {
   .profile__about {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
     padding: 14px 0 0 0;
+    max-width: 282px;
   }
 }

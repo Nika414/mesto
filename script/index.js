@@ -3,8 +3,8 @@ let popup = document.querySelector('.popup');
 let formElement = document.querySelector('.popup__form');
 let name = document.querySelector('.profile__name');
 let about = document.querySelector('.profile__about');
-let nameInput = formElement.querySelector('.popup__form-name');
-let aboutInput = formElement.querySelector('.popup__form-about');
+let nameInput = formElement.querySelector('.popup__form-item_value_name');
+let aboutInput = formElement.querySelector('.popup__form-item_value_about');
 let closeButton = document.querySelector('.popup__close-button');
 
 function openPopup() {
