@@ -15,7 +15,7 @@
   </header>
   <main class="main">
     <section class="profile">
-      <img src="./images/image.jpg" alt="Аватар пользователя" class="profile__avatar">
+      <div class="profile__avatar"></div>
       <div class="profile__info">
         <div class="profile__name-edit">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -27,60 +27,19 @@
       <button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
     </section>
     <section>
-      <ul class="photo-cards">
-        <li class="photo-cards__item">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск." class="photo-cards__pic">
-          <div class="photo-cards__description">
-            <h2 class="photo-cards__photo-title">Карачаевск</h2>
-            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="photo-cards__item">
-          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус." class="photo-cards__pic">
-          <div class="photo-cards__description">
-            <h2 class="photo-cards__photo-title">Гора Эльбрус</h2>
-            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="photo-cards__item">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай." class="photo-cards__pic">
-          <div class="photo-cards__description">
-            <h2 class="photo-cards__photo-title">Домбай</h2>
-            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="photo-cards__item">
-          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус." class="photo-cards__pic">
-          <div class="photo-cards__description">
-            <h2 class="photo-cards__photo-title">Гора Эльбрус</h2>
-            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="photo-cards__item">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай." class="photo-cards__pic">
-          <div class="photo-cards__description">
-            <h2 class="photo-cards__photo-title">Домбай</h2>
-            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-        <li class="photo-cards__item">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия." class="photo-cards__pic">
-          <div class="photo-cards__description">
-            <h2 class="photo-cards__photo-title">Карачаево-Черкессия</h2>
-            <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
-          </div>
-        </li>
-      </ul>
+      <div class="photo-cards">
+
+      </div>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_purpose_edit-profile">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="personalinfo" method="post">
+      <form class="popup__form popup__edit-profile-form" name="personalinfo" method="post">
         <input class="popup__form-item popup__form-item_value_name" type="text" name="fullname" id="fullname"
           placeholder="Имя">
         <input class="popup__form-item popup__form-item_value_about" type="text" name="about" id="about"
@@ -89,6 +48,40 @@
       </form>
     </div>
   </div>
+  <div class="popup popup_purpose_add-place">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup-add-place-form" name="newplace" method="post">
+        <input class="popup__form-item popup__form-item_value_placename" type="text" name="placename" id="placename"
+          placeholder="Название">
+        <input class="popup__form-item popup__form-item_value_placelink" type="text" name="placelink" id="placelink"
+          placeholder="Ссылка на картинку">
+        <button class="popup__form-button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_purpose_full-photo">
+    <div class="popup__container popup__full-photo-container">
+      
+      <figure class="popup__fig">
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <img class="popup__full-photo">
+        <figcaption class="popup__full-photo-description"></figcaption>
+      </figure>
+    </div>
+  </div>
+  <template id="card">
+    <div class="photo-cards__item">
+      <img class="photo-cards__pic">
+      <img src="./images/Bin.svg" class="photo-cards__bin">
+      <div class="photo-cards__description">
+        <h2 class="photo-cards__photo-title">Карачаево-Черкессия</h2>
+        <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+      </div>
+    </div>
+  </template>
   <script src="./script/index.js"></script>
 </body>
 
