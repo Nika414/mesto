@@ -1,0 +1,8 @@
+.popup__full-photo {
+  width: fit-content;
+  height: fit-content;
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: 0;
+  padding: 0;
+}

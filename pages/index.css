@@ -29,12 +29,13 @@
 @import url(../blocks/photo-cards/__like-button/_active/photo-cards__like-button_active.css);
 @import url(../blocks/photo-cards/__photo-title/photo-cards__photo-title.css);
 @import url(../blocks/photo-cards/__pic/photo-cards__pic.css);
+@import url(../blocks/photo-cards/__bin/photo-card__bin.css);
 
 /*FOOTER*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-/*POPUP*/
+/*POPUPы изменение профиля и доавление места*/
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
@@ -45,73 +46,10 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 
+/*POPUP открытия фото на всю стр*/
 
-.photo-cards__bin {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
-.photo-cards__bin:hover {
-  opacity: 0.5;
-}
-
-
-
-.popup__full-photo {
-  width: 75vw;
-  height: 75vh;
-}
-
-.popup__full-photo-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  background-color: unset
-}
-
-.popup_purpose_full-photo {
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup__full-photo {
-  width: fit-content;
-  height: fit-content;
-  max-width: 75vw;
-  max-height: 75vh;
-  margin: 0;
-  padding: 0;
-}
-
-
-
-.popup__full-photo-description {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: #FFFFFF;
-  text-align: left;
-  margin: 0;
-  padding: 10px 0 0 0;
-  align-self: flex-start;
-}
-
-.popup__fig {
-  position: relative;
-}
+@import url(../blocks/popup/_purpose_full-photo/popup_purpose_full-photo.css);
+@import url(../blocks/popup/__full-photo/popup__full-photo.css);
+@import url(../blocks/popup/__full-photo-container/popup__full-photo-container.css);
+@import url(../blocks/popup/__full-photo-description/popup__full-photo-description.css);
+@import url(../blocks/popup/__fig/popup__fig.css);

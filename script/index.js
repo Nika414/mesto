@@ -1,14 +1,14 @@
-let editButton = document.querySelector('.profile__edit-button');
-let editProfilePopup = document.querySelector('.popup_purpose_edit-profile');
-let editProfileForm = document.querySelector('.popup__edit-profile-form');
-let name = document.querySelector('.profile__name');
-let about = document.querySelector('.profile__about');
-let nameInput = editProfileForm.querySelector('.popup__form-item_value_name');
-let aboutInput = editProfileForm.querySelector('.popup__form-item_value_about');
-let closeButtons = document.querySelectorAll('.popup__close-button');
-let addButton = document.querySelector('.profile__add-button');
-let addPlacePopup = document.querySelector('.popup_purpose_add-place');
-let addPlaceForm = document.querySelector('.popup-add-place-form')
+const editButton = document.querySelector('.profile__edit-button');
+const editProfilePopup = document.querySelector('.popup_purpose_edit-profile');
+const editProfileForm = document.querySelector('.popup__edit-profile-form');
+const name = document.querySelector('.profile__name');
+const about = document.querySelector('.profile__about');
+const nameInput = editProfileForm.querySelector('.popup__form-item_value_name');
+const aboutInput = editProfileForm.querySelector('.popup__form-item_value_about');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+const addButton = document.querySelector('.profile__add-button');
+const addPlacePopup = document.querySelector('.popup_purpose_add-place');
+const addPlaceForm = document.querySelector('.popup-add-place-form')
 const placeName = document.querySelector('.popup__form-item_value_placename');
 const placeLink = document.querySelector('.popup__form-item_value_placelink');
 const photoCards = document.querySelector('.photo-cards');
@@ -130,6 +130,7 @@ initialCards.forEach(function (item) {
 function openFullPhotoPopup(name, link) {
 
   fullPhotoPopup.querySelector('.popup__full-photo').src = link;
+  fullPhotoPopup.querySelector('.popup__full-photo').alt = name;
   fullPhotoPopup.querySelector('.popup__full-photo-description').textContent = name
   fullPhotoPopup.classList.add('popup_opened');
 }
@@ -147,9 +148,8 @@ function deletePlace(event) {
   a.remove();
 }
 
-
-
 //Засабмитить новое место
+
 function addPlaceFormSubmitHandler(evt) {
   evt.preventDefault();
   addPlacePopup.classList.remove('popup_opened');
