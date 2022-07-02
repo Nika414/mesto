@@ -39,12 +39,19 @@
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__edit-profile-form" name="personalinfo" method="post">
-        <input class="popup__form-item popup__form-item_value_name" type="text" name="fullname" id="fullname"
-          placeholder="Имя">
-        <input class="popup__form-item popup__form-item_value_about" type="text" name="about" id="about"
-          placeholder="О себе">
+      <form class="popup__form popup__edit-profile-form" name="personalinfo" method="post" novalidate>
+        <label class="popup__form-label">
+          <input class="popup__form-item popup__form-item_value_name" type="text" name="fullname" id="fullname"
+            placeholder="Имя" required minlength="2" maxlength="40">
+          <span class="fullname-input-error popup__form-item-error"></span>
+        </label>
+        <label class="popup__form-label">
+          <input class="popup__form-item popup__form-item_value_about" type="text" name="about" id="about"
+            placeholder="О себе" required minlength="2" maxlength="200">
+          <span class="about-input-error popup__form-item-error"></span>
+        </label>
         <button class="popup__form-button" type="submit">Сохранить</button>
+
       </form>
     </div>
   </div>
@@ -52,11 +59,18 @@
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form popup-add-place-form" name="newplace" method="post">
-        <input class="popup__form-item popup__form-item_value_placename" type="text" name="placename" id="placename"
-          placeholder="Название">
-        <input class="popup__form-item popup__form-item_value_placelink" type="text" name="placelink" id="placelink"
-          placeholder="Ссылка на картинку">
+      <form class="popup__form popup-add-place-form" name="newplace" method="post" novalidate>
+        <label class="popup__form-label">
+          <input class="popup__form-item popup__form-item_value_placename" type="text" name="placename" id="placename"
+            placeholder="Название" minlength="2" maxlength="30" required>
+          <span class="placename-input-error popup__form-item-error"></span>
+        </label>
+        <label class="popup__form-label">
+          <input type="url" class="popup__form-item popup__form-item_value_placelink" type="text" name="placelink"
+            id="placelink" placeholder="Ссылка на картинку" required>
+          <span class="placelink-input-error popup__form-item-error"></span>
+        </label>
+
         <button class="popup__form-button" type="submit">Создать</button>
       </form>
     </div>
@@ -64,7 +78,6 @@
 
   <div class="popup popup_purpose_full-photo">
     <div class="popup__container popup__full-photo-container">
-
       <figure class="popup__fig">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <img class="popup__full-photo">
@@ -84,6 +97,7 @@
   </template>
   <script src="./script/cards.js"></script>
   <script src="./script/index.js"></script>
+  <script src="./script/validation.js"></script>
 </body>
 
 </html>

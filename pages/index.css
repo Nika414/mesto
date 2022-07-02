@@ -35,16 +35,21 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-/*POPUPы изменение профиля и доавление места*/
+/*POPUPы изменение профиля и добавление места*/
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form-button/popup__form-button.css);
+@import url(../blocks/popup/__form-button/_inactive/popup__form-item_inactive.css);
 @import url(../blocks/popup/__form-item/popup__form-item.css);
+@import url(../blocks/popup/__form-item/_type_error/popup__form-item_type_error.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__form-item-error/popup__form-item-error.css);
+@import url(../blocks/popup/__form-item-error/_active/popup__form-item-error_active.css);
+@import url(../blocks/popup/__form-label/popup__form-label.css);
 
 /*POPUP открытия фото на всю стр*/
 

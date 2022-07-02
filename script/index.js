@@ -19,7 +19,8 @@ const fullPhotoPopup = document.querySelector('.popup_purpose_full-photo');
 // Открыть попап 
 
 function openPopup(popup) {
-  popup.classList.add('popup_opened')
+  popup.classList.add('popup_opened');
+  document.addEventListener('keyup', closePopupByEsc)
 }
 
 // Открыть попап по изменению профиля
@@ -41,6 +42,25 @@ function openAddPlacePopup() {
 function closePopup(evt) {
   const popup = evt.target.closest('.popup');
   popup.classList.remove('popup_opened');
+  }
+
+//Закрыть попап нажатием на оверлэй
+const popups = document.querySelectorAll('.popup');
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(evt);
+    }
+  })
+})
+
+//закрыть попап по ESC
+
+function closePopupByEsc(evt) {
+  if (evt.key === "Escape") {
+    const popup = document.querySelector('.popup_opened');
+    popup.classList.remove('popup_opened');
+  };
 }
 
 // Засабмитить попап изменения профиля

@@ -1,0 +1,19 @@
+.popup__form-item-error {
+    display: none;
+    width: 358px;
+    height: 12px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    position: absolute;
+    left: 0;
+    top: 32px;
+}
+
+.popup__form-item-error:nth-of-type(2) {
+    left: 36px;
+    top: 200px;
+}

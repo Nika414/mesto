@@ -13,7 +13,7 @@
 }
 
 .popup__form-item:nth-of-type(1) {
-  margin: 0 auto 30px auto;
+  margin: 0 auto 32px auto;
 }
 
 .popup__form-item:focus {
@@ -27,8 +27,7 @@
   line-height: 17px;
   letter-spacing: 0em;
   text-align: left;
-  color: black;
-  opacity: 1;
+  color: rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width:550px) {

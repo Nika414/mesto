@@ -10,7 +10,7 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
-  margin: 48px 0 37px 0;
+  margin: 46px 0 37px 0;
   box-sizing: border-box;
   padding: 0;
   border: none;
@@ -22,12 +22,13 @@
 }
 
 
+
 @media screen and (max-width:550px) {
   .popup__form-button {
     width: 238px;
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px 0 25px 0;
+    margin: 43px 0 25px 0;
   }
 }
