@@ -12,9 +12,7 @@
   margin: 0 auto 0 auto;
 }
 
-.popup__form-item:nth-of-type(1) {
-  margin: 0 auto 32px auto;
-}
+
 
 .popup__form-item:focus {
   outline-color: #6694ff;

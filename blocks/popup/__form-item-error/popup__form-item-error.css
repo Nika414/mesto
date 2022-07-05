@@ -1,7 +1,7 @@
 .popup__form-item-error {
-    display: none;
+    overflow: hidden;
     width: 358px;
-    height: 12px;
+    height: fit-content;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -11,9 +11,16 @@
     position: absolute;
     left: 0;
     top: 32px;
+    margin-bottom: 13px;
 }
 
 .popup__form-item-error:nth-of-type(2) {
     left: 36px;
     top: 200px;
+}
+
+@media screen and (max-width:550px) {
+    .popup__form-item-error {
+        width: 238px;
+    }
 }

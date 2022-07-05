@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   max-width: 282px;
-  max-height: fit-content;
+  height: 85px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
