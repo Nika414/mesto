@@ -33,7 +33,7 @@ function openPopupEditProfile() {
   openPopup(popupEditProfile);
   resetButtonState(popupEditProfile);
   resetSpans(popupEditProfile);
-  resetForms(popupEditProfile);
+  formEditProfile.reset();
   nameInput.value = name.textContent;
   aboutInput.value = about.textContent;
 }
@@ -44,14 +44,14 @@ function openPopupAddPlace() {
   openPopup(popupAddPlace);
   resetButtonState(popupAddPlace);
   resetSpans(popupAddPlace);
-  resetForms(popupAddPlace);
+  formAddPlace.reset();
 }
 
 // Закрыть попап
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-
+  document.removeEventListener('keyup', closePopupByEsc);
 }
 
 // Убрать спаны и карсное подчеркивание
@@ -67,11 +67,7 @@ const resetSpans = (popup) => {
   )
 }
 
-//Сбросить форму
-const resetForms = (popup) => {
-  const form = popup.querySelector('.popup__form');
-  form.reset();
-}
+
 // Изменить состояние кнопки
 const resetButtonState = (popup) => {
   const button = popup.querySelector('.popup__form-button');
@@ -96,7 +92,6 @@ function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
-    document.removeEventListener('keyup', closePopupByEsc);
   };
 }
 
@@ -108,7 +103,7 @@ function editeProfileFormSubmitHandler(evt) {
   about.textContent = aboutInput.value;
   closePopup(popupEditProfile);
   resetSpans(popupEditProfile);
-  resetForms(popupEditProfile);
+  formEditProfile.reset();
 }
 
 // Создать карточку
@@ -185,7 +180,7 @@ function formAddPlaceSubmitHandler(evt) {
   closePopup(popupAddPlace);
   renderItem(placeName.value, placeLink.value);
   resetSpans(popupAddPlace);
-  resetForms(popupAddPlace);
+  formAddPlace.reset();
 }
 
 // Навесить листенер на кнопку открыть попап изменения профиля

@@ -26,7 +26,7 @@ const hideInputError = (formElement, inputElement, config) => {
 
 //Проверить валидность поля
 
-const isValid = (formElement, inputElement) => {
+const isValid = (formElement, inputElement, config) => {
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage, config);
     } else {
@@ -65,7 +65,7 @@ const setEventListeners = (formElement, config) => {
     toggleButtonState(inputList, buttonElement, config);
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
-            isValid(formElement, inputElement);
+            isValid(formElement, inputElement, config);
             toggleButtonState(inputList, buttonElement, config);
         });
     })
