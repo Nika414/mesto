@@ -1,7 +1,3 @@
-
-export { initialCards, Card, renderCards }
-import { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc } from './index.js'
-
 const initialCards = [
     {
         name: 'Архыз',
@@ -33,10 +29,11 @@ const initialCards = [
 //класс карточки
 
 class Card {
-    constructor(name, link, cardSelector) {
+    constructor(name, link, cardSelector, handleCardClick) {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     //скопировать темплейт
@@ -51,42 +48,31 @@ class Card {
     //создать карточку  
     generateCard() {
         this._element = this._getTemplate();
+        
+        this._cardImage  = this._element.querySelector('.photo-cards__pic');
+        this._likeButton = this._element.querySelector('.photo-cards__like-button');
+        this._deleteButton = this._element.querySelector('.photo-cards__bin');
+        this._imageTitle = this._element.querySelector('.photo-cards__photo-title');
         this._setEventListeners();
-        this._element.querySelector('.photo-cards__photo-title').textContent = this._name;
-        this._element.querySelector('.photo-cards__pic').src = this._link;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
+        this._imageTitle.textContent = this._name;
         return this._element;
     }
 
     _setEventListeners() {
-        this._element.querySelector('.photo-cards__pic').addEventListener('click', () => { this._handleOpenFullPhotoPopup(fullPhotoPopup); });
-        this._element.querySelector('.photo-cards__like-button').addEventListener('click', () => { this._handleLikeClick(event); });
-        this._element.querySelector('.photo-cards__bin').addEventListener('click', () => { this._handleDeleteButton(event); })
+        this._cardImage.addEventListener('click', () => { this._handleCardClick(this._name, this._link); });
+        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(); });
+        this._deleteButton.addEventListener('click', () => { this._handleDeleteButton(); })
     }
 
-
-    _handleOpenFullPhotoPopup(fullPhotoPopup) {
-        fullPhoto.src = this._link;
-        fullPhoto.alt = this._name;
-        document.querySelector('.popup__full-photo-description').textContent = this._name
-        openPopup(fullPhotoPopup);
-        document.addEventListener('keyup', closePopupByEsc);
-
-    }
-
-    _handleLikeClick(event) {
+    _handleLikeClick() {
         event.target.classList.toggle('photo-cards__like-button_active');
     }
 
-    _handleDeleteButton(event) {
-        const a = event.target.closest('.photo-cards__item');
-        a.remove();
+    _handleDeleteButton() {
+        this._element.remove();
     }
 }
 
-//Создать, заполнить карточку данными и вывести на страницу
-const renderCards = initialCards.forEach((item) => {
-    const card = new Card(item.name, item.link, '#card');
-    const cardElement = card.generateCard();
-    document.querySelector('.photo-cards').prepend(cardElement);
-})
-
+export { Card, initialCards}

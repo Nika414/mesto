@@ -1,5 +1,3 @@
-export { config, FormValidator }
-
 const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__form-item',
@@ -13,6 +11,8 @@ class FormValidator {
     constructor(config, formElement) {
         this._config = config;
         this._formElement = formElement;
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+        this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
     }
 
     //Показать span и красное подчеркивание
@@ -42,19 +42,27 @@ class FormValidator {
 
     //Изменить состояние кнопки
 
-    _toggleButtonState = (inputList, buttonElement) => {
-        if (this._hasInvalidInput(inputList)) {
-            buttonElement.classList.add(this._config.inactiveButtonClass);
-            buttonElement.setAttribute('disabled', '');
+    _toggleButtonState = () => {
+        if (this._hasInvalidInput()) {
+            this._buttonElement.classList.add(this._config.inactiveButtonClass);
+            this._buttonElement.setAttribute('disabled', '');
         } else {
-            buttonElement.classList.remove(this._config.inactiveButtonClass);
-            buttonElement.removeAttribute('disabled', '');
+            this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+            this._buttonElement.removeAttribute('disabled', '');
         }
     }
+
+    _resetValidation = () => {
+        this._toggleButtonState();
+        this._inputList.forEach((inputElement) => {
+            this._hideInputError(inputElement)
+        });
+    }
+
     //Проверить, есть ли в форме хотя бы одно невалидное поле
 
-    _hasInvalidInput = (inputList) => {
-        return inputList.some((inputElement) => {
+    _hasInvalidInput = () => {
+        return this._inputList.some((inputElement) => {
             return !inputElement.validity.valid
         })
     }
@@ -62,21 +70,19 @@ class FormValidator {
     //Поставить обработчики на все инпуты
 
     _setEventListeners = () => {
-        const inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-        const buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-        this._toggleButtonState(inputList, buttonElement);
-        inputList.forEach((inputElement) => {
+        this._toggleButtonState();
+        this._resetValidation();
+        this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this._toggleButtonState(inputList, buttonElement);
+                this._toggleButtonState();
             });
         })
     }
     //Поставить обработчики на все формы
     enableValidation = () => {
-        const formList = Array.from(document.querySelectorAll(this._config.formSelector));
-        formList.forEach(() => {
-            this._setEventListeners();
-        })
+        this._setEventListeners();
     }
 }
+
+export { config, FormValidator }
