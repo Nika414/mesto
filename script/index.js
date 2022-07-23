@@ -23,16 +23,13 @@ const fullPhotoDescription = document.querySelector('.popup__full-photo-descript
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
-  formList.forEach((formElement) => {
-    const formValidator = new FormValidator(config, formElement);
-    formValidator.enableValidation();
-  })
 }
 
 // Открыть попап по изменению профиля
 
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
+  formEditProfileValidator.resetValidation();
   nameInput.value = name.textContent;
   aboutInput.value = about.textContent;
 }
@@ -41,8 +38,9 @@ function openPopupEditProfile() {
 
 function openPopupAddPlace() {
   openPopup(popupAddPlace);
+  formAddPlaceValidator.resetValidation()
   formAddPlace.reset();
-  
+
 }
 
 // Закрыть попап
@@ -50,10 +48,7 @@ function openPopupAddPlace() {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keyup', closePopupByEsc);
-  formList.forEach((formElement) => {
-    const formValidator = new FormValidator(config, formElement);
-    formValidator.enableValidation();
-  })
+
 }
 
 //Навесить листенер на оверлей и кнопку закрытия
@@ -141,5 +136,12 @@ function renderCards() {
 }
 
 renderCards();
+
+const formAddPlaceValidator = new FormValidator(config, formAddPlace);
+formAddPlaceValidator.enableValidation();
+
+const formEditProfileValidator = new FormValidator(config, formEditProfile);
+formEditProfileValidator.enableValidation();
+
 
 export { fullPhotoPopup, fullPhoto, openPopup, handleCardClick }

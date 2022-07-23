@@ -62,11 +62,11 @@ class Card {
 
     _setEventListeners() {
         this._cardImage.addEventListener('click', () => { this._handleCardClick(this._name, this._link); });
-        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(); });
+        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event); });
         this._deleteButton.addEventListener('click', () => { this._handleDeleteButton(); })
     }
 
-    _handleLikeClick() {
+    _handleLikeClick(event) {
         event.target.classList.toggle('photo-cards__like-button_active');
     }
 
