@@ -38,9 +38,8 @@ function openPopupEditProfile() {
 
 function openPopupAddPlace() {
   openPopup(popupAddPlace);
-  formAddPlaceValidator.resetValidation()
   formAddPlace.reset();
-
+  formAddPlaceValidator.resetValidation();
 }
 
 // Закрыть попап
