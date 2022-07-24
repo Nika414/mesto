@@ -1,0 +1,60 @@
+/*ROOT*/
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/inter.css);
+@import url(../blocks/root/root.css);
+
+
+/*Header*/
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+/*Profile*/
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__about/profile__about.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__name-edit/profile__name-edit.css);
+
+/*photo-cards*/
+
+@import url(../blocks/photo-cards/photo-cards.css);
+@import url(../blocks/photo-cards/__description/photo-cards__description.css);
+@import url(../blocks/photo-cards/__item/photo-cards__item.css);
+@import url(../blocks/photo-cards/__like-button/photo-cards__like-button.css);
+@import url(../blocks/photo-cards/__like-button/_active/photo-cards__like-button_active.css);
+@import url(../blocks/photo-cards/__photo-title/photo-cards__photo-title.css);
+@import url(../blocks/photo-cards/__pic/photo-cards__pic.css);
+@import url(../blocks/photo-cards/__bin/photo-card__bin.css);
+
+/*FOOTER*/
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/*POPUPы изменение профиля и добавление места*/
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form-button/popup__form-button.css);
+@import url(../blocks/popup/__form-button/_inactive/popup__form-item_inactive.css);
+@import url(../blocks/popup/__form-item/popup__form-item.css);
+@import url(../blocks/popup/__form-item/_type_error/popup__form-item_type_error.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__form-item-error/popup__form-item-error.css);
+@import url(../blocks/popup/__form-item-error/_active/popup__form-item-error_active.css);
+@import url(../blocks/popup/__form-label/popup__form-label.css);
+
+/*POPUP открытия фото на всю стр*/
+
+@import url(../blocks/popup/_purpose_full-photo/popup_purpose_full-photo.css);
+@import url(../blocks/popup/__full-photo/popup__full-photo.css);
+@import url(../blocks/popup/__full-photo-container/popup__full-photo-container.css);
+@import url(../blocks/popup/__full-photo-description/popup__full-photo-description.css);
+@import url(../blocks/popup/__fig/popup__fig.css);
