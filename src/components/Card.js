@@ -1,26 +1,26 @@
 const initialCards = [
     {
-        name: 'Архыз',
+        placename: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
     {
-        name: 'Челябинская область',
+        placename: 'Челябинская область',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-        name: 'Иваново',
+        placename: 'Иваново',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-        name: 'Камчатка',
+        placename: 'Камчатка',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-        name: 'Холмогорский район',
+        placename: 'Холмогорский район',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-        name: 'Байкал',
+        placename: 'Байкал',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
@@ -29,9 +29,10 @@ const initialCards = [
 //класс карточки
 
 class Card {
-    constructor(name, link, cardSelector, handleCardClick) {
-        this._name = name;
-        this._link = link;
+    constructor(data, cardSelector, handleCardClick) {
+        this._data = data;
+        this._name = data.placename;
+        this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -47,6 +48,7 @@ class Card {
     }
     //создать карточку  
     generateCard() {
+        debugger;
         this._element = this._getTemplate();
         
         this._cardImage  = this._element.querySelector('.photo-cards__pic');
@@ -61,7 +63,7 @@ class Card {
     }
 
     _setEventListeners() {
-        this._cardImage.addEventListener('click', () => { this._handleCardClick(this._name, this._link); });
+        this._cardImage.addEventListener('click', () => { this._handleCardClick(this._data); });
         this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event); });
         this._deleteButton.addEventListener('click', () => { this._handleDeleteButton(); })
     }
@@ -75,4 +77,4 @@ class Card {
     }
 }
 
-export { Card, initialCards}
+export { Card, initialCards }
