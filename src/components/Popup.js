@@ -23,11 +23,6 @@ export class Popup {
                 this.closePopup();
             }
         })
-
-        this._popup.addEventListener('click', (evt) => {
-            this._handleEscClose(evt);
-        }
-        )
     }
 
 }

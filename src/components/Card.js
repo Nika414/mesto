@@ -18,7 +18,6 @@ class Card {
     }
     //создать карточку  
     generateCard() {
-        debugger;
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.photo-cards__pic');
         this._likeButton = this._element.querySelector('.photo-cards__like-button');
