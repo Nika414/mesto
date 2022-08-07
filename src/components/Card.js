@@ -1,33 +1,3 @@
-const initialCards = [
-    {
-        placename: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        placename: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        placename: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        placename: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        placename: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        placename: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-
-//класс карточки
-
 class Card {
     constructor(data, cardSelector, handleCardClick) {
         this._data = data;
@@ -50,8 +20,7 @@ class Card {
     generateCard() {
         debugger;
         this._element = this._getTemplate();
-        
-        this._cardImage  = this._element.querySelector('.photo-cards__pic');
+        this._cardImage = this._element.querySelector('.photo-cards__pic');
         this._likeButton = this._element.querySelector('.photo-cards__like-button');
         this._deleteButton = this._element.querySelector('.photo-cards__bin');
         this._imageTitle = this._element.querySelector('.photo-cards__photo-title');
@@ -77,4 +46,4 @@ class Card {
     }
 }
 
-export { Card, initialCards }
+export { Card }

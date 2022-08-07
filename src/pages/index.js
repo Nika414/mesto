@@ -1,6 +1,8 @@
 import './index.css'
-import { Card, initialCards } from '../components/Card.js'
-import { config, FormValidator } from '../components/FormValidator.js'
+import { initialCards } from '../utils/constants.js'
+import { Card } from '../components/Card.js'
+import { FormValidator } from '../components/FormValidator.js'
+import { config } from '../utils/constants.js'
 import { Section } from '../components/Section.js'
 import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
@@ -67,9 +69,7 @@ function createCard(data) {
 const cardsSection = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#card', () => handleCardClick(item));
-    const cardElement = card.generateCard();
-    cardsSection.addItem(cardElement);
+    cardsSection.addItem(createCard(item));
   }
 }, '.photo-cards');
 
