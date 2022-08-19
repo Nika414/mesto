@@ -11,8 +11,8 @@ class PopupWithImage extends Popup {
     openPopup(data) {
 
         this._popupPhoto.src = data.link;
-        this._popupPhoto.alt = data.placename;
-        this._popupDescription.textContent = data.placename;
+        this._popupPhoto.alt = data.name;
+        this._popupDescription.textContent = data.name;
         super.openPopup();
     }
 }

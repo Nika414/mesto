@@ -1,12 +1,15 @@
 import './index.css'
-import { initialCards } from '../utils/constants.js'
 import { Card } from '../components/Card.js'
 import { FormValidator } from '../components/FormValidator.js'
-import { config } from '../utils/constants.js'
+import { config, newCardsOptions } from '../utils/constants.js'
 import { Section } from '../components/Section.js'
 import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
 import { UserInfo } from '../components/UserInfo.js'
+import { Api } from '../components/Api.js'
+import { options } from '../utils/constants.js'
+import { PopupForDelete } from '../components/PopupForDelete'
+
 
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const formEditProfile = document.querySelector('.popup__edit-profile-form');
@@ -16,6 +19,10 @@ const buttonAddPlace = document.querySelector('.profile__add-button');
 const formAddPlace = document.querySelector('.popup-add-place-form')
 const fullPhotoPopup = document.querySelector('.popup_purpose_full-photo');
 const fullPhoto = fullPhotoPopup.querySelector('.popup__full-photo');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+const likeAmount = document.querySelector('.photo-cards__like-amount')
+
 
 // Открыть попап по изменению профиля
 function openPopupEditProfile() {
@@ -35,15 +42,18 @@ function openPopupAddPlace() {
 
 // Засабмитить попап изменения профиля
 function handleEditProfileFormSubmit(data) {
-  userInfo.setUserInfo(data);
+  const changeProfileApi = new Api(profileOptions);
+  changeProfileApi.changeInfo(data)
+    .then((res) => userInfo.setUserInfo(res))
   editProfilePopup.closePopup();
 }
-// Засабмитить попап добавления места
+// Засабмитить попап добавления места 
 function handleAddPlaceFormSubmit(data) {
-  const newCard = createCard(data);
-  cardsSection.addItem(newCard);
+  api.createCard(data)
+    .then((res) => { cardsSection.addItem(createCard(res)) })
   addPlacePopup.closePopup();
 }
+
 
 // Навесить листенер на кнопку открыть попап изменения профиля
 
@@ -58,27 +68,39 @@ buttonAddPlace.addEventListener('click', openPopupAddPlace);
 function handleCardClick(data) {
   popupFullPhoto.openPopup(data);
 }
-// Создание новой карточки
-function createCard(data) {
-  const card = new Card(data, '#card', handleCardClick);
-  const cardElement = card.generateCard();
-  return cardElement;
+// Открытие попапа для удаления фото
+function handleDeleteButtonClick(card, data) {
+  deleteCardPopup.openPopup();
+  document.querySelector('.popup__delete-button').addEventListener('click', (evt) => {
+    evt.preventDefault();
+    card.remove();
+    api.deleteCardById(data._id);
+    deleteCardPopup.closePopup();
+  })
+
 }
 
-// Создание секции с начальными карточками
-const cardsSection = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    cardsSection.addItem(createCard(item));
+
+// Создание новой карточки
+function createCard(data) {
+  const card = new Card(data, '#card', handleCardClick, handleDeleteButtonClick);
+  if (data.owner._id === 'e2db0a2449e7dbd1d490e55f') {
+    const cardElement = card.generateCard(true);
+    return cardElement;
   }
-}, '.photo-cards');
+  else {
+    const cardElement = card.generateCard(false);
+    return cardElement;
+  }
+}
+
 
 const formAddPlaceValidator = new FormValidator(config, formAddPlace);
 formAddPlaceValidator.enableValidation();
 
 const formEditProfileValidator = new FormValidator(config, formEditProfile);
 formEditProfileValidator.enableValidation();
-cardsSection.renderItem()
+
 
 const popupFullPhoto = new PopupWithImage('.popup_purpose_full-photo');
 popupFullPhoto.setEventListeners();
@@ -94,4 +116,29 @@ addPlacePopup.setEventListeners();
 
 const userInfo = new UserInfo('.popup_purpose_edit-profile', { name: '.profile__name', about: '.profile__about' })
 
-export { fullPhotoPopup, fullPhoto, handleCardClick }
+const deleteCardPopup = new PopupForDelete('.popup_purpose_delete-card');
+deleteCardPopup.setEventListeners();
+
+const api = new Api(options);
+
+api.getProfileInfo().then((data) => {
+  profileName.textContent = data.name;
+  profileAbout.textContent = data.about;
+}).catch(err => console.log('Произошла ошибка: ', err));
+
+const cardsSection = new Section('.photo-cards');
+
+
+api.getCardsInfo().then((data) => {
+  cardsSection.renderItem({
+    items: data,
+    renderer: (item) => {
+      cardsSection.addItem(createCard(item));
+    }
+  })
+}).catch(err => console.log('Произошла ошибка: ', err));
+
+
+
+
+export { fullPhotoPopup, fullPhoto, handleCardClick, handleDeleteButtonClick }

@@ -1,0 +1,52 @@
+export class Api {
+    constructor(options) {
+        this._baseUrl = options.baseUrl;
+        this._headers = options.headers;
+        this._data = options.body
+    }
+
+    _handleResponse(res) {
+        if (res.ok) { return res.json(); }
+        throw new Error('Произошла ошибка!')
+    }
+
+    getCardsInfo() {
+        return fetch(`${this._baseUrl}${'cards'}`, {
+            headers: this._headers
+        })
+            .then((res) => this._handleResponse(res))
+    }
+
+    getProfileInfo() {
+        return fetch(`${this._baseUrl}${'users/me'}`, {
+            headers: this._headers
+        })
+            .then((res) => this._handleResponse(res))
+    }
+
+    changeInfo(data) {
+        return fetch(`${this._baseUrl}${'users/me'}`, {
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify(data)
+        })
+            .then((res) => this._handleResponse(res))
+
+    }
+    createCard(data) {
+        return fetch(`${this._baseUrl}${'cards'}`, {
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify(data)
+        })
+            .then((res) => this._handleResponse(res))
+    }
+
+    deleteCardById(id) {
+        return fetch(`${this._baseUrl}cards/${id}`, {
+            method: "DELETE",
+            headers: this._headers,
+        })
+            .then((res) => this._handleResponse(res))
+    }
+}

@@ -1,29 +1,3 @@
-const initialCards = [
-    {
-        placename: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        placename: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        placename: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        placename: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        placename: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        placename: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 
 const config = {
     formSelector: '.popup__form',
@@ -33,4 +7,18 @@ const config = {
     inputErrorClass: 'popup__form-item_type_error',
     errorClass: 'popup__form-item-error_active'
 }
-export { initialCards, config }
+
+
+const options = {
+    baseUrl: 'https://nomoreparties.co/v1/cohort-48/',
+    headers: {
+        authorization: '57ec7329-d2a0-4fe8-b5d3-514e52228cd0',
+        "Content-Type": "application/json"
+    },
+    body: {
+    }
+}
+
+
+
+export { config, options }

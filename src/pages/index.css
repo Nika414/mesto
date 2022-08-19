@@ -25,11 +25,14 @@
 @import url(../blocks/photo-cards/photo-cards.css);
 @import url(../blocks/photo-cards/__description/photo-cards__description.css);
 @import url(../blocks/photo-cards/__item/photo-cards__item.css);
+@import url(../blocks/photo-cards/__like-container/photo-cards__like-container.css);
 @import url(../blocks/photo-cards/__like-button/photo-cards__like-button.css);
 @import url(../blocks/photo-cards/__like-button/_active/photo-cards__like-button_active.css);
 @import url(../blocks/photo-cards/__photo-title/photo-cards__photo-title.css);
 @import url(../blocks/photo-cards/__pic/photo-cards__pic.css);
 @import url(../blocks/photo-cards/__bin/photo-card__bin.css);
+@import url(../blocks/photo-cards/__bin/_inactive/photo-cards__bin_inactive.css);
+@import url(../blocks/photo-cards/__like-amount/photo-cards__like-amount.css);
 
 /*FOOTER*/
 @import url(../blocks/footer/footer.css);
@@ -58,3 +61,9 @@
 @import url(../blocks/popup/__full-photo-container/popup__full-photo-container.css);
 @import url(../blocks/popup/__full-photo-description/popup__full-photo-description.css);
 @import url(../blocks/popup/__fig/popup__fig.css);
+
+
+/* POPUP удаления карточки */
+@import url(../blocks/popup/__delete-card-container/popup__delete-card-container.css);
+@import url(../blocks/popup/__delete-card-text/popup__delete-card-text.css);
+@import url(../blocks/popup/__delete-button/popup__delete-button.css);

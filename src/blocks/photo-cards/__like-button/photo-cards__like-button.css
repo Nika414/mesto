@@ -1,7 +1,7 @@
 .photo-cards__like-button {
   width: 22px;
-  max-height: 19px;
-  margin: 29px 18px 29px auto;
+  height: 19px;
+  margin: 22px 20px 3px auto;
   padding: 0;
   background: url(../../../images/Like.svg);
   background-size: contain;

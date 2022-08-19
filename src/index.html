@@ -17,7 +17,7 @@
       <div class="profile__avatar"></div>
       <div class="profile__info">
         <div class="profile__name-edit">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
         </div>
         <p class="profile__about">Исследователь океана</p>
@@ -60,16 +60,15 @@
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form popup-add-place-form" name="newplace" method="post" novalidate>
         <label class="popup__form-label">
-          <input class="popup__form-item popup__form-item_value_placename" type="text" name="placename" id="placename"
+          <input class="popup__form-item popup__form-item_value_placename" type="text" name="name" id="placename"
             placeholder="Название" minlength="2" maxlength="30" required>
           <span class="placename-input-error popup__form-item-error"></span>
         </label>
         <label class="popup__form-label">
-          <input type="url" class="popup__form-item popup__form-item_value_placelink" name="link"
-            id="placelink" placeholder="Ссылка на картинку" required>
+          <input type="url" class="popup__form-item popup__form-item_value_placelink" name="link" id="placelink"
+            placeholder="Ссылка на картинку" required>
           <span class="placelink-input-error popup__form-item-error"></span>
         </label>
-
         <button class="popup__form-button popup__form-button_inactive" type="submit">Создать</button>
       </form>
     </div>
@@ -84,16 +83,29 @@
       </figure>
     </div>
   </div>
+  <div class="popup popup_purpose_delete-card">
+    <div class="popup__container popup__delete-card-container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+      <p class="popup__delete-card-text">
+        Вы уверены?
+      </p>
+      <button class="popup__delete-button" type="submit">Да</button>
+    </div>
+  </div>
   <template id="card">
     <div class="photo-cards__item">
       <img class="photo-cards__pic">
       <img src="<%=require('./images/Bin.svg')%>" class="photo-cards__bin">
       <div class="photo-cards__description">
         <h2 class="photo-cards__photo-title">Карачаево-Черкессия</h2>
-        <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+        <div class="photo-cards__like-container">
+          <button class="photo-cards__like-button" type="button" aria-label="Лайк"></button>
+          <p class="photo-cards__like-amount"></p>
+        </div>
       </div>
     </div>
   </template>
   <script type="module" src="./pages/index.js"></script>
 </body>
+
 </html>
