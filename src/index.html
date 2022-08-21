@@ -14,7 +14,9 @@
   </header>
   <main class="main">
     <section class="profile">
-      <div class="profile__avatar"></div>
+      <div class="profile__avatar">
+        <img src="<%=require('./images/Pen icon.svg')%>" alt="" class="profile__avatar-edit">
+      </div>
       <div class="profile__info">
         <div class="profile__name-edit">
           <h1 class="profile__name"></h1>
@@ -86,10 +88,26 @@
   <div class="popup popup_purpose_delete-card">
     <div class="popup__container popup__delete-card-container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-      <p class="popup__delete-card-text">
+      <p class="popup__delete-card-text popup__main-text">
         Вы уверены?
       </p>
       <button class="popup__delete-button" type="submit">Да</button>
+    </div>
+  </div>
+  <div class="popup popup_purpose_avatar-edit">
+    <div class="popup__container popup__avatar-edit-container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+      <p class="popup__avatar-edit-text popup__main-text">
+        Обновить аватар
+      </p>
+      <form class="popup__form popup-avatar-edit-form" name="editavatar" method="post" novalidate>
+        <label class="popup__form-label_value_avatar-link popup__form-label">
+        <input class="popup__form-item popup__form-item_value_avatar-link" type="url" name="avatar" id="avatar"
+          placeholder="Ссылка на твой новый аватар" minlength="2" required>
+        <span class="avatar-input-error popup__form-item-error"></span>
+        </label>
+      <button class="popup__form-button popup__form-button_inactive" type="submit">Сохранить</button>
+    </form>
     </div>
   </div>
   <template id="card">

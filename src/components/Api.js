@@ -49,4 +49,37 @@ export class Api {
         })
             .then((res) => this._handleResponse(res))
     }
+
+
+    putLike(id) {
+        return fetch(`${this._baseUrl}cards/${id}/likes`, {
+            method: "PUT",
+            headers: this._headers,
+        })
+            .then((res) => this._handleResponse(res))
+    }
+
+    deleteLike(id) {
+        return fetch(`${this._baseUrl}cards/${id}/likes`, {
+            method: "DELETE",
+            headers: this._headers,
+        })
+            .then((res) => this._handleResponse(res))
+    }
+
+    changeAvatar(data) {
+        return fetch(`${this._baseUrl}${'users/me/avatar'}`, {
+        method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify(data)
+        })
+            .then((res) => this._handleResponse(res))
+    }
+
+    getAvatar() {
+        return fetch(`${this._baseUrl}${'users/me/avatar'}`, {
+            headers: this._headers
+        })
+            .then((res) => this._handleResponse(res))
+    }
 }

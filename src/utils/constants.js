@@ -19,6 +19,6 @@ const options = {
     }
 }
 
+const myId = 'e2db0a2449e7dbd1d490e55f';
 
-
-export { config, options }
+export { config, options, myId }

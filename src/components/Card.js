@@ -1,5 +1,5 @@
 class Card {
-    constructor(data, cardSelector, handleCardClick, handleDeleteButtonClick) {
+    constructor(data, cardSelector, handleCardClick, handleDeleteButtonClick, handleLikeApi, handleLikeStatus) {
         this._data = data;
         this._name = data.name;
         this._link = data.link;
@@ -7,6 +7,8 @@ class Card {
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._handleDeleteButtonClick = handleDeleteButtonClick;
+        this._handleLikeApi = handleLikeApi;
+        this._handleLikeStatus = handleLikeStatus;
     }
 
     //скопировать темплейт
@@ -23,6 +25,7 @@ class Card {
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.photo-cards__pic');
         this._likeButton = this._element.querySelector('.photo-cards__like-button');
+        this._handleLikeStatus(this._data, this._likeButton);
         this._imageTitle = this._element.querySelector('.photo-cards__photo-title');
         this._likeAmount = this._element.querySelector('.photo-cards__like-amount');
         this._deleteButton = this._element.querySelector('.photo-cards__bin');
@@ -42,7 +45,7 @@ class Card {
 
     _setEventListeners() {
         this._cardImage.addEventListener('click', () => { this._handleCardClick(this._data); });
-        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event); });
+        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event); this._handleLikeApi(this._data, this._likeAmount);});
         this._deleteButton.addEventListener('click', () => { this._handleDeleteButtonClick(this._element, this._data); })
     }
 

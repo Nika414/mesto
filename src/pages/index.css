@@ -19,6 +19,7 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__name-edit/profile__name-edit.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
 
 /*photo-cards*/
 
@@ -53,6 +54,7 @@
 @import url(../blocks/popup/__form-item-error/popup__form-item-error.css);
 @import url(../blocks/popup/__form-item-error/_active/popup__form-item-error_active.css);
 @import url(../blocks/popup/__form-label/popup__form-label.css);
+@import url(../blocks/popup/__main-text/popup__main-text.css);
 
 /*POPUP открытия фото на всю стр*/
 
@@ -65,5 +67,8 @@
 
 /* POPUP удаления карточки */
 @import url(../blocks/popup/__delete-card-container/popup__delete-card-container.css);
-@import url(../blocks/popup/__delete-card-text/popup__delete-card-text.css);
 @import url(../blocks/popup/__delete-button/popup__delete-button.css);
+
+
+@import url(../blocks/popup/__avatar-edit-text/popup__avatar-edit-text.css);
+@import url(../blocks/popup/__form-label/_value_avatar-link/popup__form-label_value_avatar-link.css);
