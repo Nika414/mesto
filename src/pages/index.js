@@ -20,11 +20,7 @@ const formAddPlace = document.querySelector('.popup-add-place-form');
 const formEditAvatar = document.querySelector('.popup-avatar-edit-form')
 const fullPhotoPopup = document.querySelector('.popup_purpose_full-photo');
 const fullPhoto = fullPhotoPopup.querySelector('.popup__full-photo');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
 const avatarChanging = document.querySelector('.profile__avatar-edit');
-const profileAvtar = document.querySelector('.profile__avatar');
-console.log(profileAvtar)
 
 
 
@@ -43,31 +39,53 @@ function openPopupAddPlace() {
   formAddPlaceValidator.resetValidation();
 }
 
+// Открыть попап по изменению аватара
+function openPopupEditAvtar() {
+  editAvatarPopup.openPopup();
+  formEditAvatar.reset();
+  formEditAvatarValidator.resetValidation();
+}
+
+// Открытие попапа с фото по клику на карточку
+
+function handleCardClick(data) {
+  popupFullPhoto.openPopup(data);
+}
+
+// Открытие попапа подтверждения удаления фото
+function openDeleteCardPopup(card, data) {
+  deleteCardPopup.openPopup();
+  deleteCardPopup.setEventListeners(card, data);
+}
 
 // Засабмитить попап изменения профиля
 function handleEditProfileFormSubmit(data) {
   api.changeInfo(data)
-    .then((res) => userInfo.setUserInfo(res))
+    .then((res) => userInfo.setUserInfo(res)).finally(() => {
+      editProfilePopup.renderLoading(false, 'Сохранить');
+    })
   editProfilePopup.closePopup();
 }
 
+// Засабмитить новый аватар
 function handleEditAvatarFormSubmit(data){
   api.changeAvatar(data)
-    .then((res) => userInfo.setUserInfo(res));
+    .then((res) => userInfo.setUserInfo(res)).finally(() => {
+      editAvatarPopup.renderLoading(false, 'Сохранить');
+    })
   editAvatarPopup.closePopup();
 }
 
-
 // Засабмитить попап добавления места 
 function handleAddPlaceFormSubmit(data) {
+
   api.createCard(data)
-    .then((res) => { cardsSection.addItem(createCard(res)) })
+    .then((res) => { cardsSection.addItem(createCard(res)) }).finally(() => {
+      addPlacePopup.renderLoading(false, 'Сохранить');});
   addPlacePopup.closePopup();
 }
 
-function openPopupEditAvtar() {
-  editAvatarPopup.openPopup();
-}
+
 // Навесить листенер на кнопку открыть попап изменения профиля
 
 buttonEditProfile.addEventListener('click', openPopupEditProfile);
@@ -76,25 +94,17 @@ buttonEditProfile.addEventListener('click', openPopupEditProfile);
 
 buttonAddPlace.addEventListener('click', openPopupAddPlace);
 
+// Навесить листенер на кнопку изменения аватара
+
 avatarChanging.addEventListener('click', openPopupEditAvtar);
 
-// Откртие попапа с фото по клику на карточку
+// Хэндлеры
 
-function handleCardClick(data) {
-  popupFullPhoto.openPopup(data);
-}
-
-
-// Открытие попапа для удаления фото
 function handleDeleteButtonClick(card, data) {
-  deleteCardPopup.openPopup();
-  document.querySelector('.popup__delete-button').addEventListener('click', (evt) => {
-    evt.preventDefault();
     card.remove();
     api.deleteCardById(data._id);
     deleteCardPopup.closePopup();
-  })
-}
+  }
 
 function handleLikeApi(data, like) {
   const status = data.likes.some(function (el) {
@@ -127,7 +137,7 @@ function handleLikeStatus(data, like) {
 
 // Создание новой карточки
 function createCard(data) {
-  const card = new Card(data, '#card', handleCardClick, handleDeleteButtonClick, handleLikeApi, handleLikeStatus);
+  const card = new Card(data, '#card', handleCardClick, openDeleteCardPopup, handleLikeApi, handleLikeStatus);
   if (data.owner._id === myId) {
     const cardElement = card.generateCard(true, handleLikeStatus);
     return cardElement;
@@ -161,19 +171,14 @@ addPlacePopup.setEventListeners();
 
 const userInfo = new UserInfo('.popup_purpose_edit-profile', { name: '.profile__name', about: '.profile__about', avatar:'.profile__avatar' })
 
-const deleteCardPopup = new PopupWithConfirmation('.popup_purpose_delete-card');
-deleteCardPopup.setEventListeners();
+const deleteCardPopup = new PopupWithConfirmation('.popup_purpose_delete-card', handleDeleteButtonClick);
+
 
 const api = new Api(options);
 
 api.getProfileInfo().then((data) => {
   userInfo.setUserInfo(data)
  }).catch(err => console.log('Произошла ошибка: ', err));
-
-// api.getAvatar().then((data) => {
-//   profileName.textContent = data.name;
-//   profileAbout.textContent = data.about;
-// }).catch(err => console.log('Произошла ошибка: ', err));
 
 const cardsSection = new Section('.photo-cards');
 
@@ -186,4 +191,4 @@ api.getCardsInfo().then((data) => {
   })
 }).catch(err => console.log('Произошла ошибка: ', err));
 
-export { fullPhotoPopup, fullPhoto, handleCardClick, handleDeleteButtonClick }
+export { fullPhotoPopup, fullPhoto, handleCardClick, handleDeleteButtonClick, openDeleteCardPopup }

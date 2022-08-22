@@ -72,6 +72,8 @@ class FormValidator {
             });
         })
     }
+
+    
     //Поставить обработчики на все формы
     enableValidation = () => {
         this._setEventListeners();

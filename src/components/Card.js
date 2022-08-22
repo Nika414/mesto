@@ -1,12 +1,12 @@
 class Card {
-    constructor(data, cardSelector, handleCardClick, handleDeleteButtonClick, handleLikeApi, handleLikeStatus) {
+    constructor(data, cardSelector, handleCardClick, openDeleteCardPopup, handleLikeApi, handleLikeStatus) {
         this._data = data;
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes.length;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        this._handleDeleteButtonClick = handleDeleteButtonClick;
+        this._openDeleteCardPopup = openDeleteCardPopup;
         this._handleLikeApi = handleLikeApi;
         this._handleLikeStatus = handleLikeStatus;
     }
@@ -46,7 +46,8 @@ class Card {
     _setEventListeners() {
         this._cardImage.addEventListener('click', () => { this._handleCardClick(this._data); });
         this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event); this._handleLikeApi(this._data, this._likeAmount);});
-        this._deleteButton.addEventListener('click', () => { this._handleDeleteButtonClick(this._element, this._data); })
+
+        this._deleteButton.addEventListener('click', () => { this._openDeleteCardPopup(this._element, this._data); })
     }
 
     _handleLikeClick(event) {
