@@ -53,11 +53,6 @@ class Card {
     _handleLikeClick(event) {
         event.target.classList.toggle('photo-cards__like-button_active');
     }
-
-    _handleDeleteButton() {
-
-
-    }
 }
 
 export { Card }
