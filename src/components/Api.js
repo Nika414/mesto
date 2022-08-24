@@ -2,7 +2,6 @@ export class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl;
         this._headers = options.headers;
-        this._data = options.body
     }
 
     _handleResponse(res) {
@@ -15,7 +14,7 @@ export class Api {
             headers: this._headers
         })
             .then((res) => this._handleResponse(res))
-    }   
+    }
 
     getProfileInfo() {
         return fetch(`${this._baseUrl}${'users/me'}`, {
@@ -69,7 +68,7 @@ export class Api {
 
     changeAvatar(data) {
         return fetch(`${this._baseUrl}${'users/me/avatar'}`, {
-        method: "PATCH",
+            method: "PATCH",
             headers: this._headers,
             body: JSON.stringify(data)
         })

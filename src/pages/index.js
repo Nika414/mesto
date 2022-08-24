@@ -137,7 +137,7 @@ avatarChanging.addEventListener('click', openPopupEditAvtar);
 
 function handleDeleteButtonClick(card) {
 
-  api.deleteCardById(card._data._id).
+  api.deleteCardById(card.data._id).
     then((res) => {
       card.delete();
       deleteCardPopup.closePopup();
@@ -148,26 +148,28 @@ function handleDeleteButtonClick(card) {
     });
 }
 
-function handleLikeApi(data, event) {
-  console.log(data)
-  const status = data.data.likes.some(function (el) {
+function handleLikeApi(card, event) {
+
+  const status = card.data.likes.some(function (el) {
     return (el._id === userId);
   });
   if (status) {
-    api.deleteLike(data.data._id)
+    api.deleteLike(card.data._id)
       .then((result) => {
-        data.likeAmount.textContent = result.likes.length;
-        event.target.classList.toggle('photo-cards__like-button_active');
+        card.likeAmount.textContent = result.likes.length;
+        card.toggleLike(event);
+        card.updateData(result)
       })
       .catch((err) => {
         console.log(err)
       });
   }
   else {
-    api.putLike(data.data._id)
+    api.putLike(card.data._id)
       .then((result) => {
-        data.likeAmount.textContent = result.likes.length;
-        event.target.classList.toggle('photo-cards__like-button_active');
+        card.likeAmount.textContent = result.likes.length;
+        card.toggleLike(event);
+        card.updateData(result)
       })
       .catch((err) => {
         console.log(err)
