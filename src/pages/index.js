@@ -7,7 +7,7 @@ import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
 import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
-import { options, myId } from '../utils/constants.js'
+import { options } from '../utils/constants.js'
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation'
 
 
@@ -22,7 +22,27 @@ const fullPhotoPopup = document.querySelector('.popup_purpose_full-photo');
 const fullPhoto = fullPhotoPopup.querySelector('.popup__full-photo');
 const avatarChanging = document.querySelector('.profile__avatar-edit');
 
+let userId;
 
+const api = new Api(options);
+
+const profileInfo = api.getProfileInfo()
+const cardsInfo = api.getCardsInfo()
+
+Promise.all([profileInfo, cardsInfo])
+  .then(([userData, cards]) => {
+    console.log(userData)
+    userId = userData._id;
+    
+    userInfo.setUserInfo(userData)
+    cardsSection.renderItem({
+      items: cards,
+      renderer: (item) => {
+        cardsSection.addItem(createCard(item));
+      }
+    })
+  })
+  .catch(err => console.log('Произошла ошибка: ', err));
 
 // Открыть попап по изменению профиля
 function openPopupEditProfile() {
@@ -53,36 +73,43 @@ function handleCardClick(data) {
 }
 
 // Открытие попапа подтверждения удаления фото
-function openDeleteCardPopup(card, data) {
+function openDeleteCardPopup(card) {
   deleteCardPopup.openPopup();
-  deleteCardPopup.setEventListeners(card, data);
+
+  deleteCardPopup.setEventListeners(card);
 }
 
 // Засабмитить попап изменения профиля
 function handleEditProfileFormSubmit(data) {
   api.changeInfo(data)
-    .then((res) => userInfo.setUserInfo(res)).finally(() => {
+    .then((res) => {userInfo.setUserInfo(res); editProfilePopup.closePopup();})
+    .catch((err) => {console.log(err)})
+    .finally(() => {
       editProfilePopup.renderLoading(false, 'Сохранить');
     })
-  editProfilePopup.closePopup();
 }
 
 // Засабмитить новый аватар
 function handleEditAvatarFormSubmit(data){
   api.changeAvatar(data)
-    .then((res) => userInfo.setUserInfo(res)).finally(() => {
+    .then((res) => {userInfo.setUserInfo(res); editAvatarPopup.closePopup();})
+    .catch((err) => {console.log(err)})
+    .finally(() => {
       editAvatarPopup.renderLoading(false, 'Сохранить');
     })
-  editAvatarPopup.closePopup();
+  
 }
 
 // Засабмитить попап добавления места 
 function handleAddPlaceFormSubmit(data) {
 
   api.createCard(data)
-    .then((res) => { cardsSection.addItem(createCard(res)) }).finally(() => {
-      addPlacePopup.renderLoading(false, 'Сохранить');});
-  addPlacePopup.closePopup();
+    .then((res) => {cardsSection.addItem(createCard(res)); addPlacePopup.closePopup() })
+    .catch((err) => {console.log(err)})
+    .finally(() => {
+      addPlacePopup.renderLoading(false, 'Сохранить');
+      });
+  ;
 }
 
 
@@ -100,50 +127,42 @@ avatarChanging.addEventListener('click', openPopupEditAvtar);
 
 // Хэндлеры
 
-function handleDeleteButtonClick(card, data) {
-    card.remove();
-    api.deleteCardById(data._id);
-    deleteCardPopup.closePopup();
+function handleDeleteButtonClick(card) {
+    api.deleteCardById(card._id).then((res) => {card._element.remove(); deleteCardPopup.closePopup();})
+    .catch((err) => {console.log(err)});
   }
 
-function handleLikeApi(data, like) {
-  const status = data.likes.some(function (el) {
-    return (el._id === myId);
+function handleLikeApi(data) {
+
+  const status = data._data.likes.some(function (el) {
+    return (el._id === userId);
   });
 
   if (status) {
-    api.deleteLike(data._id).then((result) => {
-      like.textContent = result.likes.length;
-    })
+    api.deleteLike(data._data._id).then((result) => {
+      data._likeAmount.textContent = result.likes.length;
+    }).catch((err) => {console.log(err)});
   }
   else {
-    api.putLike(data._id).then((result) => {
-      like.textContent = result.likes.length;
-    })
+    api.putLike(data._data._id).then((result) => {
+      data._likeAmount.textContent = result.likes.length;
+    }).catch((err) => {console.log(err)})
   }
 }
 
-function handleLikeStatus(data, like) {
-  const status = data.likes.some(function (el) {
-    return (el._id === myId);
-  });
-  if (status) {
-    like.classList.add('photo-cards__like-button_active');
-  }
-  else {
-    like.classList.remove('photo-cards__like-button_active')
-  }
-}
+
+
 
 // Создание новой карточки
 function createCard(data) {
-  const card = new Card(data, '#card', handleCardClick, openDeleteCardPopup, handleLikeApi, handleLikeStatus);
-  if (data.owner._id === myId) {
-    const cardElement = card.generateCard(true, handleLikeStatus);
+  const card = new Card(data, '#card', handleCardClick, openDeleteCardPopup, handleLikeApi, userId);
+
+  if (data.owner._id === userId) {
+    const cardElement = card.generateCard(true);
     return cardElement;
   }
   else {
-    const cardElement = card.generateCard(false, handleLikeStatus);
+    const cardElement = card.generateCard(false);
     return cardElement;
   }
 }
@@ -169,26 +188,12 @@ editAvatarPopup.setEventListeners();
 const addPlacePopup = new PopupWithForm('.popup_purpose_add-place', handleAddPlaceFormSubmit);
 addPlacePopup.setEventListeners();
 
-const userInfo = new UserInfo('.popup_purpose_edit-profile', { name: '.profile__name', about: '.profile__about', avatar:'.profile__avatar' })
+const userInfo = new UserInfo('.popup_purpose_edit-profile', { name: '.profile__name', about: '.profile__about', avatar:'.profile__avatar'})
 
 const deleteCardPopup = new PopupWithConfirmation('.popup_purpose_delete-card', handleDeleteButtonClick);
 
-
-const api = new Api(options);
-
-api.getProfileInfo().then((data) => {
-  userInfo.setUserInfo(data)
- }).catch(err => console.log('Произошла ошибка: ', err));
-
 const cardsSection = new Section('.photo-cards');
 
-api.getCardsInfo().then((data) => {
-  cardsSection.renderItem({
-    items: data,
-    renderer: (item) => {
-      cardsSection.addItem(createCard(item));
-    }
-  })
-}).catch(err => console.log('Произошла ошибка: ', err));
+
 
 export { fullPhotoPopup, fullPhoto, handleCardClick, handleDeleteButtonClick, openDeleteCardPopup }

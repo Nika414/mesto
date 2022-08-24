@@ -15,16 +15,7 @@ export class Api {
             headers: this._headers
         })
             .then((res) => this._handleResponse(res))
-    }
-
-    getCardById(id) {
-        return fetch(`${this._baseUrl}cards/${id}`, {
-            headers: this._headers,
-        })
-            .then((res) => this._handleResponse(res))
-    }
-
-    
+    }   
 
     getProfileInfo() {
         return fetch(`${this._baseUrl}${'users/me'}`, {

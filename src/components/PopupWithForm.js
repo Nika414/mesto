@@ -21,6 +21,10 @@ export class PopupWithForm extends Popup {
         else {this._submitButton.textContent = info;}
       }
 
+      renderError(err) {
+        this._submitButton.textContent = err.status;
+      }
+
     setEventListeners() {
         super.setEventListeners()
         this._form.addEventListener('submit', (evt) => {
