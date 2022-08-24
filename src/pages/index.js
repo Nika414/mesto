@@ -25,15 +25,13 @@ const avatarChanging = document.querySelector('.profile__avatar-edit');
 let userId;
 
 const api = new Api(options);
-
 const profileInfo = api.getProfileInfo()
 const cardsInfo = api.getCardsInfo()
+const cardsSection = new Section('.photo-cards');
 
 Promise.all([profileInfo, cardsInfo])
   .then(([userData, cards]) => {
-    console.log(userData)
     userId = userData._id;
-    
     userInfo.setUserInfo(userData)
     cardsSection.renderItem({
       items: cards,
@@ -74,9 +72,7 @@ function handleCardClick(data) {
 
 // Открытие попапа подтверждения удаления фото
 function openDeleteCardPopup(card) {
-  deleteCardPopup.openPopup();
-
-  deleteCardPopup.setEventListeners(card);
+  deleteCardPopup.openPopup(card);
 }
 
 // Засабмитить попап изменения профиля
@@ -128,7 +124,10 @@ avatarChanging.addEventListener('click', openPopupEditAvtar);
 // Хэндлеры
 
 function handleDeleteButtonClick(card) {
-    api.deleteCardById(card._id).then((res) => {card._element.remove(); deleteCardPopup.closePopup();})
+  
+    api.deleteCardById(card._data._id).
+    then((res) => {card._element.remove(); deleteCardPopup.closePopup();;})
+
     .catch((err) => {console.log(err)});
   }
 
@@ -155,6 +154,7 @@ function handleLikeApi(data) {
 
 // Создание новой карточки
 function createCard(data) {
+
   const card = new Card(data, '#card', handleCardClick, openDeleteCardPopup, handleLikeApi, userId);
 
   if (data.owner._id === userId) {
@@ -191,8 +191,9 @@ addPlacePopup.setEventListeners();
 const userInfo = new UserInfo('.popup_purpose_edit-profile', { name: '.profile__name', about: '.profile__about', avatar:'.profile__avatar'})
 
 const deleteCardPopup = new PopupWithConfirmation('.popup_purpose_delete-card', handleDeleteButtonClick);
+deleteCardPopup.setEventListeners();
 
-const cardsSection = new Section('.photo-cards');
+
 
 
 

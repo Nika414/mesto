@@ -10,23 +10,11 @@ class Card {
         this._openDeleteCardPopup = openDeleteCardPopup;
         this._handleLikeApi = handleLikeApi;
 
-        
-    }
 
-    //скопировать темплейт
-    _getTemplate() {
-        const cardElement = document
-            .querySelector(this._cardSelector)
-            .content
-            .querySelector('.photo-cards__item')
-            .cloneNode(true);
-        return cardElement;
     }
 
     _handlePrimaryLikeStatus() {
-    
-       console.log(this._userId)
-        const status = this._data.likes.some(function (el) {
+        const status = this._data.likes.some((el) => {
             return (el._id === this._userId);
         });
         if (status) {
@@ -36,7 +24,16 @@ class Card {
             this._likeButton.classList.remove('photo-cards__like-button_active');
         }
     }
-
+    
+    //скопировать темплейт
+    _getTemplate() {
+        const cardElement = document
+            .querySelector(this._cardSelector)
+            .content
+            .querySelector('.photo-cards__item')
+            .cloneNode(true);
+        return cardElement;
+    }
 
     //создать карточку  
     generateCard(idIsTrue) {
@@ -63,7 +60,7 @@ class Card {
 
     _setEventListeners() {
         this._cardImage.addEventListener('click', () => { this._handleCardClick(this._data); });
-        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event); this._handleLikeApi(this); });
+        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event,); this._handleLikeApi(this); });
         this._deleteButton.addEventListener('click', () => { this._openDeleteCardPopup(this); })
     }
 
