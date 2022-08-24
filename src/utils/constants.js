@@ -20,4 +20,4 @@ const options = {
 }
 
 
-export { config, options}
+export { config, options }

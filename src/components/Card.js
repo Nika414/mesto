@@ -1,6 +1,6 @@
 class Card {
     constructor(data, cardSelector, handleCardClick, openDeleteCardPopup, handleLikeApi, userId) {
-        this._data = data;
+        this.data = data;
         this._name = data.name;
         this._userId = userId;
         this._link = data.link;
@@ -9,12 +9,10 @@ class Card {
         this._handleCardClick = handleCardClick;
         this._openDeleteCardPopup = openDeleteCardPopup;
         this._handleLikeApi = handleLikeApi;
-
-
     }
 
     _handlePrimaryLikeStatus() {
-        const status = this._data.likes.some((el) => {
+        const status = this.data.likes.some((el) => {
             return (el._id === this._userId);
         });
         if (status) {
@@ -24,7 +22,7 @@ class Card {
             this._likeButton.classList.remove('photo-cards__like-button_active');
         }
     }
-    
+
     //скопировать темплейт
     _getTemplate() {
         const cardElement = document
@@ -42,13 +40,13 @@ class Card {
         this._likeButton = this._element.querySelector('.photo-cards__like-button');
         this._handlePrimaryLikeStatus();
         this._imageTitle = this._element.querySelector('.photo-cards__photo-title');
-        this._likeAmount = this._element.querySelector('.photo-cards__like-amount');
+        this.likeAmount = this._element.querySelector('.photo-cards__like-amount');
         this._deleteButton = this._element.querySelector('.photo-cards__bin');
         this._setEventListeners();
         this._cardImage.src = this._link;
         this._cardImage.alt = this._name;
         this._imageTitle.textContent = this._name;
-        this._likeAmount.textContent = this._likes;
+        this.likeAmount.textContent = this._likes;
         if (idIsTrue === true) {
             return this._element;
         }
@@ -58,14 +56,14 @@ class Card {
         }
     }
 
-    _setEventListeners() {
-        this._cardImage.addEventListener('click', () => { this._handleCardClick(this._data); });
-        this._likeButton.addEventListener('click', (event) => { this._handleLikeClick(event,); this._handleLikeApi(this); });
-        this._deleteButton.addEventListener('click', () => { this._openDeleteCardPopup(this); })
+    delete() {
+        this._element.remove();
     }
 
-    _handleLikeClick(event) {
-        event.target.classList.toggle('photo-cards__like-button_active');
+    _setEventListeners() {
+        this._cardImage.addEventListener('click', () => { this._handleCardClick(this.data); });
+        this._likeButton.addEventListener('click', (event) => { this._handleLikeApi(this, event); });
+        this._deleteButton.addEventListener('click', () => { this._openDeleteCardPopup(this); })
     }
 }
 

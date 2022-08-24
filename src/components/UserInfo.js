@@ -3,8 +3,6 @@ export class UserInfo {
         this._profileName = document.querySelector(userinfo.name);
         this._profileAbout = document.querySelector(userinfo.about);
         this._profileAvatar = document.querySelector(userinfo.avatar);
-        this._popup = document.querySelector(popup)
-        this._form = this._popup.querySelector('.popup__edit-profile-form');
     }
 
     getUserInfo() {
