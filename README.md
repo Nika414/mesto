@@ -19,3 +19,5 @@
 * HTML
 * CSS (адаптивная верстка)
 * JavaScript (ООП, валидация форм)
+
+![image](https://github.com/Nika414/mesto/blob/main/Preview_edit%20profile.gif)
