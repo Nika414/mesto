@@ -26,5 +26,6 @@
 
 ![image](https://github.com/Nika414/mesto/blob/main/Preview_new%20place.gif)
 
-Изменение инофрмации профиля
+Изменение информации профиля
+
 ![image](https://github.com/Nika414/mesto/blob/main/Preview_edit%20profile.gif)
