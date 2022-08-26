@@ -31,7 +31,7 @@ class FormValidator {
         } else {
             this._hideInputError(inputElement);
         }
-    }
+    };
 
     //Изменить состояние кнопки
 

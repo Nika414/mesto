@@ -6,7 +6,7 @@ const config = {
     inactiveButtonClass: 'popup__form-button_inactive',
     inputErrorClass: 'popup__form-item_type_error',
     errorClass: 'popup__form-item-error_active'
-}
+};
 
 
 const options = {
@@ -17,7 +17,6 @@ const options = {
     },
     body: {
     }
-}
+};
 
-
-export { config, options }
+export { config, options };

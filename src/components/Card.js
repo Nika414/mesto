@@ -9,7 +9,7 @@ class Card {
         this._handleCardClick = handleCardClick;
         this._openDeleteCardPopup = openDeleteCardPopup;
         this._handleLikeApi = handleLikeApi;
-        this._activeLikeSelector = 'photo-cards__like-button_active'
+        this._activeLikeSelector = 'photo-cards__like-button_active';
     }
 
     _handlePrimaryLikeStatus() {
@@ -72,10 +72,10 @@ class Card {
     _setEventListeners() {
         this._cardImage.addEventListener('click', () => { this._handleCardClick(this.data); });
         this._likeButton.addEventListener('click', (event) => { this._handleLikeApi(this, event); });
-        this._deleteButton.addEventListener('click', () => { this._openDeleteCardPopup(this); })
+        this._deleteButton.addEventListener('click', () => { this._openDeleteCardPopup(this); });
     }
 
 
 }
 
-export { Card }
+export { Card };

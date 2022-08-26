@@ -6,21 +6,21 @@ export class Api {
 
     _handleResponse(res) {
         if (res.ok) { return res.json(); }
-        throw new Error('Произошла ошибка!')
+        throw new Error('Произошла ошибка!');
     }
 
     getCardsInfo() {
         return fetch(`${this._baseUrl}${'cards'}`, {
             headers: this._headers
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
     getProfileInfo() {
         return fetch(`${this._baseUrl}${'users/me'}`, {
             headers: this._headers
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
     changeInfo(data) {
@@ -29,7 +29,7 @@ export class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
 
     }
     createCard(data) {
@@ -38,7 +38,7 @@ export class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
     deleteCardById(id) {
@@ -46,7 +46,7 @@ export class Api {
             method: "DELETE",
             headers: this._headers,
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
 
@@ -55,7 +55,7 @@ export class Api {
             method: "PUT",
             headers: this._headers,
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
     deleteLike(id) {
@@ -63,7 +63,7 @@ export class Api {
             method: "DELETE",
             headers: this._headers,
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
     changeAvatar(data) {
@@ -72,13 +72,13 @@ export class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 
     getAvatar() {
         return fetch(`${this._baseUrl}${'users/me/avatar'}`, {
             headers: this._headers
         })
-            .then((res) => this._handleResponse(res))
+            .then((res) => this._handleResponse(res));
     }
 }
